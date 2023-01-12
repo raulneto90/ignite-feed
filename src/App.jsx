@@ -3,6 +3,8 @@ import { Post } from './components/Post';
 import { Sidebar } from './components/Sidebar';
 import './global.css';
 import styles from './App.module.css';
+import { posts } from './api/fakeData';
+
 
 export function App() {
 
@@ -13,10 +15,16 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Raul Neto"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolore est delectus facere accusamus, similique reprehenderit quis, nemo maxime deserunt pariatur, eius quod excepturi nam cum mollitia doloribus ipsa illo!"
-          />
+          {posts.map(post => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
